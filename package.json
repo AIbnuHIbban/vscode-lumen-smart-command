@@ -1,0 +1,79 @@
+{
+	"name": "lumen-smart-command",
+	"displayName": "Lumen Smart Command",
+	"description": "Smart Command for Lumen",
+	"icon": "images/icon.png",
+	"publisher": "aibnuhibban",
+	"repository": "https://github.com/AIbnuHIbban/vscode-lumen-smart-command",
+	"version": "0.0.5",
+	"engines": {
+		"vscode": "^1.44.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "luman.migration",
+				"title": "Lumen: Create Migration"
+			},
+			{
+				"command": "luman.controller",
+				"title": "Lumen: Create Controller"
+			},
+			{
+				"command": "luman.model",
+				"title": "Lumen: Create Model"
+			},
+			{
+				"command": "luman.seeder",
+				"title": "Lumen: Create Seeder"
+			},
+			{
+				"command": "luman.migrate",
+				"title": "Lumen: Migrate"
+			},
+			{
+				"command": "luman.migrate.rollback",
+				"title": "Lumen: Migrate Rollback"
+			},
+			{
+				"command": "luman.serve.start",
+				"title": "Lumen: Start Server"
+			},
+			{
+				"command": "luman.serve.stop",
+				"title": "Lumen: Stop Server"
+			},
+			{
+				"command": "luman.serve.restart",
+				"title": "Lumen: Restart Server"
+			},
+			{
+				"command": "luman.router",
+				"title": "Lumen: Create Route"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.44.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
+}
