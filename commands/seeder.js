@@ -8,24 +8,31 @@ module.exports = function(vscode, fs,pathwork, path){
             placeHolder: "Table Name"
         }).then(function(table_name) {
             var filename	= `${val}.php`
-            var pathfile 	= path.join(pathwork + "/app/Database/Seeds/"+filename)
-            const controller_create = `<?php 
-namespace App\\Database\\Seeds;
+            var pathfile 	= path.join(pathwork + "/database/seeds/"+filename)
+            const seeder_create = `<?php
+use Illuminate\\Database\\Seeder;
+use Illuminate\\Support\\Facades\\DB;
 
-class SimpleSeeder extends \\CodeIgniter\\Database\\Seeder{
+class ${val} extends Seeder{
+    
     public function run(){
-        $data = [
+        // Option 1
+        // $data = [
             
-        ];
+        // ];
+        // DB::table('${table_name}')->create($data);
 
-        $this->db->table('${table_name}')->insert($data);
+        // Option 2
+        DB::table('${table_name}')->create([
+            
+        ]);
     }
 }`
             fs.access(pathfile, function(err) {
                 if (err) {
                     fs.open(pathfile, "w+", function(err, fd) {
                         if (err) throw err;
-                        fs.writeFileSync(fd, controller_create)
+                        fs.writeFileSync(fd, seeder_create)
                         // fs.close(fd)
                         var openPath = vscode.Uri.file(pathfile); //A request file path
                         vscode.workspace.openTextDocument(openPath).then(function(val) {

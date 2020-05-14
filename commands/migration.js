@@ -3,13 +3,13 @@ const times         = require('./functions')
 module.exports = function(vscode, fs, pathwork, path, table_name = false, show = true){
     if (table_name !== false) {
         var val = ""
-        execute(vscode, fs, pathwork, path, val, table_name)
+        execute(vscode, fs, pathwork, path, val, table_name, show)
     }else{
         vscode.window.showInputBox({
             prompt: "name of table",
             placeHolder: "name of table"
         }).then(function(val) {
-            execute(vscode, fs, pathwork, path, val, show)
+            execute(vscode, fs, pathwork, path, val, table_name, show)
         })
     }
 }
@@ -23,35 +23,27 @@ function execute(vscode, fs, pathwork, path, val, table_name = false, show) {
     }
     var date 	 	= new Date()
     var time		= times.leadZeroHours(date)+times.leadZeroMinute(date)+times.leadZeroSecond(date)
-    var format		= date.getFullYear()+"-0"+date.getMonth().toString().slice(-2)+"-0"+date.getDate().toString().slice(-2)+"-"+time
+    var format		= date.getFullYear()+"_0"+date.getMonth().toString().slice(-2)+"_0"+date.getDate().toString().slice(-2)+"_"+time
     var filename	= `${format}_${value}.php`
-    var pathfile 	= path.join(pathwork + "/app/Database/Migrations/"+filename)
-    const migration_create = `<?php 
-namespace App\\Database\\Migrations;
+    var pathfile 	= path.join(pathwork + "/database/migrations/"+filename)
+    var name_class  = times.capitalize(value)
+    const migration_create = `<?php
 
-use CodeIgniter\\Database\\Migration;
+use Illuminate\\Database\\Migrations\\Migration;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Support\\Facades\\Schema;
 
-class User extends Migration{
+class ${name_class} extends Migration{
+    
     public function up(){
-
-        // Uncomment below if want config
-        // $this->forge->addField([
-        // 		'id'          		=> [
-        // 				'type'           => 'INT',
-        // 				'unsigned'       => TRUE,
-        // 				'auto_increment' => TRUE
-        // 		],
-        // 		'title'       		=> [
-        // 				'type'           => 'VARCHAR',
-        // 				'constraint'     => '100',
-        // 		],
-        // ]);
-        // $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('${value}');
+        Schema::create('${value}', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
     }
 
     public function down(){
-        $this->forge->dropTable('${value}');
+        Schema::dropIfExists('${value}');
     }
 }`
     fs.access(pathfile, function(err) {
@@ -66,7 +58,7 @@ class User extends Migration{
                     });
                 }
             })
-            vscode.window.showInformationMessage('Successfully added a migration !');
+            vscode.window.showInformationMessage('Successfully create a migration !');
         }else{
             vscode.window.showWarningMessage("Name already exist !");
         }

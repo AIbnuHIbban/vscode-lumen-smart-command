@@ -2,14 +2,14 @@ const shell 	= require('./functions')
 var terminal 	= {}
 module.exports.start = function (vscode) {
 	let NEXT_TERM_ID = 1;
-    terminal 	= vscode.window.createTerminal(`Spark Serve ${NEXT_TERM_ID}`);
-	terminal.sendText("xdg-open http://localhost:8080; php spark serve");
-	vscode.window.showInformationMessage('Successfuly Run Spark Server On http://localhost:8080')
+    terminal 	= vscode.window.createTerminal(`Lumen Serve ${NEXT_TERM_ID}`);
+	terminal.sendText("xdg-open http://localhost:8000; php -S localhost:8000 -t public");
+	vscode.window.showInformationMessage('Successfuly Run Lumen Server On http://localhost:8000')
 }
 
 module.exports.stop = function (vscode) {
 	shell.closeTerminal(terminal)
-	vscode.window.showInformationMessage('Successfuly Stop Spark Server')
+	vscode.window.showInformationMessage('Successfuly Stop Lumen Server')
 }
 
 module.exports.restart = function (vscode) {
@@ -18,8 +18,8 @@ module.exports.restart = function (vscode) {
 	}else{
 		shell.closeTerminal(terminal)
 		let NEXT_TERM_ID 	= 1;
-		terminal 			= vscode.window.createTerminal(`Spark Serve ${NEXT_TERM_ID}`);
-		terminal.sendText("xdg-open http://localhost:8080; php spark serve");
-		vscode.window.showInformationMessage('Successfuly Restart Spark Server')
+		terminal 			= vscode.window.createTerminal(`Lumen Serve ${NEXT_TERM_ID}`);
+		terminal.sendText("xdg-open http://localhost:8000; php -S localhost:8000 -t public");
+		vscode.window.showInformationMessage('Successfuly Restart Lumen Server')
 	}
 }

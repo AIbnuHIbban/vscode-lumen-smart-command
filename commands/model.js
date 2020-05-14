@@ -1,5 +1,6 @@
 const migration     = require('./migration')
 const controller    = require('./controller')
+const capitalize    = require('./functions');
 
 module.exports = function(vscode, fs,pathwork, path){
     vscode.window.showInputBox({
@@ -36,18 +37,21 @@ module.exports = function(vscode, fs,pathwork, path){
 }
 
 function execute(vscode, fs, pathwork, path, model_name, table_name,show = true) {
-    var filename	= `${model_name}.php`
-    var pathfile 	= path.join(pathwork + "/app/Models/"+filename)
+    var class_name  = capitalize.capitalize(model_name)
+    var filename	= `${class_name}.php`
+    var pathfile 	= path.join(pathwork + "/app/"+filename)
     
-    const controller_create = `<?php 
-namespace App\\Models;
+    const controller_create = `<?php   
+namespace App;
 
-use CodeIgniter\\Model;
+use Illuminate\\Database\\Eloquent\\Model;
 
-class UserModel extends Model{
-    protected $table      = '${table_name}';
-    // Uncomment below if you want add primary key
-    // protected $primaryKey = 'id';
+class ${class_name} extends Model{
+    protected $table = "${table_name}";
+
+    // protected $fillable = [];
+
+    // public $timestamps = false;
 }`
     fs.access(pathfile, function(err) {
         if (err) {
@@ -61,7 +65,7 @@ class UserModel extends Model{
                     });
                 }
             })
-            vscode.window.showInformationMessage('Successfully added a model !');
+            vscode.window.showInformationMessage('Successfully create a model !');
         }else{
             vscode.window.showWarningMessage("Name already exist !");
         }

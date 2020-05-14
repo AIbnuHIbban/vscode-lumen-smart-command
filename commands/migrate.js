@@ -6,15 +6,15 @@ module.exports = async (vscode) => {
         placeHolder: "Also Refresh Migrate ?",
     });
     if (answ_refresh == "Yes") {
-        const terminal  = vscode.window.createTerminal(`Spark Migrate #${NEXT_TERM_ID++}`);
-        terminal.sendText("php spark migrate:refresh");
+        const terminal  = vscode.window.createTerminal(`Lumen Migrate #${NEXT_TERM_ID++}`);
+        terminal.sendText("php artisan migrate:fresh");
         vscode.window.showInformationMessage('Successfuly Refresh Migrate')
-        shell.closeTerminal(terminal)
+        setTimeout(function(){shell.closeTerminal(terminal)},12000)
     }else{
-        const terminal  = vscode.window.createTerminal(`Spark Migrate #${NEXT_TERM_ID++}`);
-        terminal.sendText("php spark migrate");
+        const terminal  = vscode.window.createTerminal(`Lumen Migrate #${NEXT_TERM_ID++}`);
+        terminal.sendText("php artisan migrate");
         vscode.window.showInformationMessage('Successfuly Migrate')
-        shell.closeTerminal(terminal)
+        setTimeout(function(){shell.closeTerminal(terminal)},12000)
     }
     
 }

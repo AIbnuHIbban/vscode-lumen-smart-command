@@ -5,7 +5,7 @@
 	"icon": "images/icon.png",
 	"publisher": "aibnuhibban",
 	"repository": "https://github.com/AIbnuHIbban/vscode-lumen-smart-command",
-	"version": "0.0.5",
+	"version": "0.0.14",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
@@ -19,43 +19,43 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "luman.migration",
+				"command": "lumen.migration",
 				"title": "Lumen: Create Migration"
 			},
 			{
-				"command": "luman.controller",
+				"command": "lumen.controller",
 				"title": "Lumen: Create Controller"
 			},
 			{
-				"command": "luman.model",
+				"command": "lumen.model",
 				"title": "Lumen: Create Model"
 			},
 			{
-				"command": "luman.seeder",
+				"command": "lumen.seeder",
 				"title": "Lumen: Create Seeder"
 			},
 			{
-				"command": "luman.migrate",
+				"command": "lumen.migrate",
 				"title": "Lumen: Migrate"
 			},
 			{
-				"command": "luman.migrate.rollback",
+				"command": "lumen.migrate.rollback",
 				"title": "Lumen: Migrate Rollback"
 			},
 			{
-				"command": "luman.serve.start",
+				"command": "lumen.serve.start",
 				"title": "Lumen: Start Server"
 			},
 			{
-				"command": "luman.serve.stop",
+				"command": "lumen.serve.stop",
 				"title": "Lumen: Stop Server"
 			},
 			{
-				"command": "luman.serve.restart",
+				"command": "lumen.serve.restart",
 				"title": "Lumen: Restart Server"
 			},
 			{
-				"command": "luman.router",
+				"command": "lumen.router",
 				"title": "Lumen: Create Route"
 			}
 		]

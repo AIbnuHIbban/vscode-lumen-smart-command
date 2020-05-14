@@ -20,8 +20,8 @@ module.exports = function(vscode, fs,pathwork, path){
 }
 
 function execute(vscode, fs,pathwork, path, route_name,controller_name, function_name) {
-    let append    = `$routes->get('${route_name}', '${capitalize.capitalize(controller_name)}::${function_name}');`
-    var pathfile 	= path.join(pathwork + "/app/Config/Routes.php")
+    let append    = `$routes->get('${route_name}', '${capitalize.capitalize(controller_name)}@${function_name}');`
+    var pathfile 	= path.join(pathwork + "/routes/web.php")
     var openPath    = vscode.Uri.file(pathfile); //A request file path
     
     vscode.workspace.openTextDocument(openPath).then(function(value) {

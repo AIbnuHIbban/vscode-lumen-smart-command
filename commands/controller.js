@@ -2,7 +2,7 @@ const capitalize        = require('./functions');
 
 module.exports = function(vscode, fs,pathwork, path, model = false, show = true){
     if (model !== false) {
-        var initModel   = `use App\\Models\\${model};`
+        var initModel   = `use App\\${capitalize.capitalize(model)};`
     }else{
         var initModel   = ""
     }
@@ -18,12 +18,13 @@ function execute(vscode, fs,pathwork, path, val,initModel, show) {
     var value       = val.replace(' ','_');
     var title       = capitalize.capitalize(value)
     var filename	= `${title}.php`
-    var pathfile 	= path.join(pathwork + "/app/Controllers/"+filename)
-    const controller_create = `<?php 
-namespace App\\Controllers;
+    var pathfile 	= path.join(pathwork + "/app/Http/Controllers/"+filename)
+    const controller_create = `<?php
+namespace App\\Http\\Controllers;
 
-use CodeIgniter\\Controller;
+use Illuminate\\Http\\Request;
 ${initModel}
+
 class ${title} extends Controller{
 
 }`
@@ -39,7 +40,7 @@ class ${title} extends Controller{
                     });
                 }
             })
-            vscode.window.showInformationMessage('Successfully added a controller !');
+            vscode.window.showInformationMessage('Successfully create a controller!');
         }else{
             vscode.window.showWarningMessage("Name already exist !");
         }
