@@ -21,15 +21,15 @@
 
 ## Upcoming Updates
 
- - [] Create Model + with option (migration,controller)
- - [] Create Route
- - [] Run Migrate
- - [] Run Migrate Rollback
- - [] Run Migrate Refresh
- - [] Start Server
- - [] Stop Server
- - [] Restart Server
- - [] Create Seeder
+ - [ ] Create Model + with option (migration,controller)
+ - [ ] Create Route
+ - [ ] Run Migrate
+ - [ ] Run Migrate Rollback
+ - [ ] Run Migrate Refresh
+ - [ ] Start Server
+ - [ ] Stop Server
+ - [ ] Restart Server
+ - [ ] Create Seeder
 
 ## Support
 **if you want support you can give me a "cup of coffee"**
