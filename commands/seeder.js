@@ -1,3 +1,5 @@
+const shell 	= require('./functions')
+
 module.exports = function(vscode, fs,pathwork, path){
     vscode.window.showInputBox({
         prompt: "Seeder Name",
@@ -39,6 +41,10 @@ class ${val} extends Seeder{
                             vscode.window.showTextDocument(val);
                         });
                     })
+	                let NEXT_TERM_ID = 1;
+                    const terminal  = vscode.window.createTerminal(`Lumen Dump Autoload ${NEXT_TERM_ID++} }`);
+                    terminal.sendText("composer dump-autoload");
+                    setTimeout(function(){shell.closeTerminal(terminal)},12000)
                     vscode.window.showInformationMessage('Successfully added a seeder !');
                 }else{
                     vscode.window.showWarningMessage("Name already exist !");

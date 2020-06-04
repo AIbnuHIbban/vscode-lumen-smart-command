@@ -5,12 +5,19 @@
 	"icon": "images/icon.png",
 	"publisher": "aibnuhibban",
 	"repository": "https://github.com/AIbnuHIbban/vscode-lumen-smart-command",
-	"version": "0.0.14",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.44.0"
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"Lumen",
+		"Artisan",
+		"Smart Command",
+		"LeeNuksID",
+		"php"
 	],
 	"activationEvents": [
 		"*"
