@@ -2,7 +2,7 @@ const capitalize        = require('./functions');
 
 module.exports = function(vscode, fs,pathwork, path, model = false, show = true){
     if (model !== false) {
-        var initModel   = `use App\\${capitalize.capitalize(model)};`
+        var initModel   = `use App\\Models\\${capitalize.capitalize(model)};`
     }else{
         var initModel   = ""
     }
