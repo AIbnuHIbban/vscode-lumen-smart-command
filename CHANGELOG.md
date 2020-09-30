@@ -1,9 +1,9 @@
 # Change Log
 
-All notable changes to the "codeigniter-command" extension will be documented in this file.
+## v.1.1
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+- Support Lumen 8
 
-## [Unreleased]
+## v.1.0
 
-- Initial release
+- Tested Successfully

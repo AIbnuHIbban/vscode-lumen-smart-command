@@ -39,10 +39,10 @@ module.exports = function(vscode, fs,pathwork, path){
 function execute(vscode, fs, pathwork, path, model_name, table_name,show = true) {
     var class_name  = capitalize.capitalize(model_name)
     var filename	= `${class_name}.php`
-    var pathfile 	= path.join(pathwork + "/app/"+filename)
+    var pathfile 	= path.join(pathwork + "/app/Models/"+filename)
     
     const controller_create = `<?php   
-namespace App;
+namespace App\\Models;
 
 use Illuminate\\Database\\Eloquent\\Model;
 
